@@ -1,0 +1,153 @@
+<html>
+<body>
+<table border="1">
+<tr>
+<td>name</td><td>value</td><td>description</td>
+</tr>
+<tr>
+<td><a name="io.sort.factor">io.sort.factor</a></td><td>10</td><td>The number of streams to merge at once while sorting
+  files.  This determines the number of open file handles.</td>
+</tr>
+<tr>
+<td><a name="io.sort.mb">io.sort.mb</a></td><td>100</td><td>The total amount of buffer memory to use while sorting 
+  files, in megabytes.  By default, gives each merge stream 1MB, which
+  should minimize seeks.</td>
+</tr>
+<tr>
+<td><a name="io.file.buffer.size">io.file.buffer.size</a></td><td>4096</td><td>The size of buffer for use in sequence files.
+  The size of this buffer should probably be a multiple of hardware
+  page size (4096 on Intel x86), and it determines how much data is
+  buffered during read and write operations.</td>
+</tr>
+<tr>
+<td><a name="io.bytes.per.checksum">io.bytes.per.checksum</a></td><td>512</td><td>The number of bytes per checksum.  Must not be larger than
+  io.file.buffer.size.</td>
+</tr>
+<tr>
+<td><a name="io.skip.checksum.errors">io.skip.checksum.errors</a></td><td>false</td><td>If true, when a checksum error is encountered while
+  reading a sequence file, entries are skipped, instead of throwing an
+  exception.</td>
+</tr>
+<tr>
+<td><a name="io.map.index.skip">io.map.index.skip</a></td><td>0</td><td>Number of index entries to skip between each entry.
+  Zero by default. Setting this to values larger than zero can
+  facilitate opening large map files using less memory.</td>
+</tr>
+<tr>
+<td><a name="fs.default.name">fs.default.name</a></td><td>local</td><td>The name of the default file system.  Either the
+  literal string "local" or a host:port for DFS.</td>
+</tr>
+<tr>
+<td><a name="dfs.datanode.port">dfs.datanode.port</a></td><td>50010</td><td>The port number that the dfs datanode server uses as a starting 
+	       point to look for a free port to listen on.
+</td>
+</tr>
+<tr>
+<td><a name="dfs.name.dir">dfs.name.dir</a></td><td>/tmp/hadoop/dfs/name</td><td>Determines where on the local filesystem the DFS name node
+      should store the name table.</td>
+</tr>
+<tr>
+<td><a name="dfs.data.dir">dfs.data.dir</a></td><td>/tmp/hadoop/dfs/data</td><td>Determines where on the local filesystem an DFS data node
+  should store its blocks.  If this is a comma- or space-delimited
+  list of directories, then data will be stored in all named
+  directories, typically on different devices.</td>
+</tr>
+<tr>
+<td><a name="dfs.replication">dfs.replication</a></td><td>3</td><td>How many copies we try to have at all times. The actual
+  number of replications is at max the number of datanodes in the
+  cluster.</td>
+</tr>
+<tr>
+<td><a name="dfs.df.interval">dfs.df.interval</a></td><td>3000</td><td>Disk usage statistics refresh interval in msec.</td>
+</tr>
+<tr>
+<td><a name="mapred.job.tracker">mapred.job.tracker</a></td><td>local</td><td>The host and port that the MapReduce job tracker runs
+  at.  If "local", then jobs are run in-process as a single map
+  and reduce task.
+  </td>
+</tr>
+<tr>
+<td><a name="mapred.job.tracker.info.port">mapred.job.tracker.info.port</a></td><td>50030</td><td>The port that the MapReduce job tracker info webserver runs at.
+  </td>
+</tr>
+<tr>
+<td><a name="mapred.task.tracker.output.port">mapred.task.tracker.output.port</a></td><td>50040</td><td>The port number that the MapReduce task tracker output server uses as a starting
+               point to look for a free port to listen on.
+  </td>
+</tr>
+<tr>
+<td><a name="mapred.task.tracker.report.port">mapred.task.tracker.report.port</a></td><td>50050</td><td>The port number that the MapReduce task tracker report server uses as a starting
+               point to look for a free port to listen on.
+  </td>
+</tr>
+<tr>
+<td><a name="mapred.local.dir">mapred.local.dir</a></td><td>/tmp/hadoop/mapred/local</td><td>The local directory where MapReduce stores intermediate
+  data files.  May be a space- or comma- separated list of
+  directories on different devices in order to spread disk i/o.
+  </td>
+</tr>
+<tr>
+<td><a name="mapred.system.dir">mapred.system.dir</a></td><td>/tmp/hadoop/mapred/system</td><td>The shared directory where MapReduce stores control files.
+  </td>
+</tr>
+<tr>
+<td><a name="mapred.temp.dir">mapred.temp.dir</a></td><td>/tmp/hadoop/mapred/temp</td><td>A shared directory for temporary files.
+  </td>
+</tr>
+<tr>
+<td><a name="mapred.map.tasks">mapred.map.tasks</a></td><td>2</td><td>The default number of map tasks per job.  Typically set
+  to a prime several times greater than number of available hosts.
+  Ignored when mapred.job.tracker is "local".  
+  </td>
+</tr>
+<tr>
+<td><a name="mapred.reduce.tasks">mapred.reduce.tasks</a></td><td>1</td><td>The default number of reduce tasks per job.  Typically set
+  to a prime close to the number of available hosts.  Ignored when
+  mapred.job.tracker is "local".
+  </td>
+</tr>
+<tr>
+<td><a name="mapred.task.timeout">mapred.task.timeout</a></td><td>600000</td><td>The number of milliseconds before a task will be
+  terminated if it neither reads an input, writes an output, nor
+  updates its status string.
+  </td>
+</tr>
+<tr>
+<td><a name="mapred.tasktracker.tasks.maximum">mapred.tasktracker.tasks.maximum</a></td><td>2</td><td>The maximum number of tasks that will be run
+  simultaneously by a task tracker.
+  </td>
+</tr>
+<tr>
+<td><a name="mapred.child.java.opts">mapred.child.java.opts</a></td><td>-Xmx200m</td><td>Java opts for the task tracker child processes.  Subsumes
+  'mapred.child.heap.size' (If a mapred.child.heap.size value is found
+  in a configuration, its maximum heap size will be used and a warning
+  emitted that heap.size has been deprecated). Also, the following symbols,
+  if present, will be interpolated: @taskid@ is replaced by current TaskID;
+  and @port@ will be replaced by mapred.task.tracker.report.port + 1 (A second
+  child will fail with a port-in-use if mapred.tasktracker.tasks.maximum is
+  greater than one). Any other occurrences of '@' will go unchanged. For
+  example, to enable verbose gc logging to a file named for the taskid in
+  /tmp and to set the heap maximum to be a gigabyte, pass a 'value' of:
+
+        -Xmx1024m -verbose:gc -Xloggc:/tmp/@taskid@.gc
+  </td>
+</tr>
+<tr>
+<td><a name="mapred.combine.buffer.size">mapred.combine.buffer.size</a></td><td>100000</td><td>The number of entries the combining collector caches before
+  combining them and writing to disk.</td>
+</tr>
+<tr>
+<td><a name="mapred.speculative.execution">mapred.speculative.execution</a></td><td>true</td><td>If true, then multiple instances of some map tasks may
+  be executed in parallel.</td>
+</tr>
+<tr>
+<td><a name="mapred.min.split.size">mapred.min.split.size</a></td><td>0</td><td>The minimum size chunk that map input should be split
+  into.  Note that some file formats may have minimum split sizes that
+  take priority over this setting.</td>
+</tr>
+<tr>
+<td><a name="ipc.client.timeout">ipc.client.timeout</a></td><td>60000</td><td>Defines the timeout for IPC calls in milliseconds.</td>
+</tr>
+</table>
+</body>
+</html>

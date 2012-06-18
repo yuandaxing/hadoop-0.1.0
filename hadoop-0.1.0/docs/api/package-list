@@ -1,0 +1,9 @@
+org.apache.hadoop.conf
+org.apache.hadoop.dfs
+org.apache.hadoop.examples
+org.apache.hadoop.fs
+org.apache.hadoop.io
+org.apache.hadoop.ipc
+org.apache.hadoop.mapred
+org.apache.hadoop.mapred.lib
+org.apache.hadoop.util
